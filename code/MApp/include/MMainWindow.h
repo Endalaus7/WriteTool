@@ -4,6 +4,10 @@
 #include <QApplication.h>
 #include <QMainWindow.h>
 
+#include <unordered_map>
+
+#include "ComponentManager.h"
+
 namespace Ui {
     class MainWindow;
 }
@@ -15,6 +19,9 @@ public:
     MyWindow(QWidget *parent = nullptr);
     ~MyWindow();
 
+    virtual void InitMWindow();
+    
 private:
     Ui::MainWindow* ui;
+    ComponentManager* m_componentManager;
 };

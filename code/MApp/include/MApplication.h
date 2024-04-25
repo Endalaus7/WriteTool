@@ -19,5 +19,5 @@ public:
 
     void ShowWindow();
 protected:
-    MyWindow window;
+	MyWindow m_window;
 };

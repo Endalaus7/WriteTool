@@ -6,7 +6,6 @@
 MApplication::MApplication(int argc,char** argv)
 	:QApplication(argc,argv)
 {
-
 };
 
 MApplication::~MApplication()
@@ -16,5 +15,5 @@ MApplication::~MApplication()
 
 void MApplication::ShowWindow()
 {
-	window.show();
+	m_window.show();
 }

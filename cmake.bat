@@ -13,4 +13,9 @@ set PATH=%PATH%;%QT_DIR%/bin
  -DQT6_DIR=%QT_DIR%  ^
  -DCMAKE_INSTALL_PREFIX=install ^
  -G"Visual Studio 17 2022"
-%CMAKE_DIR%/cmake.exe --build build --config Release
+
+echo build finish!
+
+::%CMAKE_DIR%/cmake.exe --build build --config Release --target install
+
+::pause
