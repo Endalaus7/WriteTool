@@ -12,6 +12,9 @@ namespace Ui {
     class MainWindow;
 }
 
+class MCreateBookWindow;
+class MHelpBookWindow;
+
 class MyWindow : public QMainWindow
 {
     Q_OBJECT
@@ -21,7 +24,17 @@ public:
 
     virtual void InitMWindow();
     
+    void SetBookGuidePath(QString path);
+protected slots:
+    void on_btn_book_Create_clicked();
+    void on_btn_book_Help_clicked();
+protected:
+
 private:
     Ui::MainWindow* ui;
-    ComponentManager* m_componentManager;
+
+    MCreateBookWindow* m_createWidget;
+    MHelpBookWindow* m_helpWidget;
+
+    ComponentManager* m_componentManager;//不应该在这，后面调整
 };

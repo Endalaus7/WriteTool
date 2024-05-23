@@ -14,10 +14,11 @@ private:
 
 	static logicLog* m_instance;
 public:
-	static logicLog* Instance(); 
+	static logicLog* Instance();
 	enum ShowType {
-		Show_CMD
+		SHOW_CMD,
+		SHOW_WIDGET
 	};
-	virtual void showLog(std::string log, ShowType type = Show_CMD);
+	virtual void showLog(std::string log, ShowType type = SHOW_CMD);
 
 };

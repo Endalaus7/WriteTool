@@ -3,7 +3,7 @@
 #include <QString>
 #include <QVector>
 #include <QMap>
-//制作表格的模板,需要实例化
+//制作表格的接口
 //所有元素都是qstring
 
 
@@ -13,7 +13,7 @@ class ITable
 public:
 	ITable();
 	
-	//表格中的属性，通常代指一列
+	//属性,即表头
 	struct TableProperty
 	{
 		TableProperty(const QString& name);

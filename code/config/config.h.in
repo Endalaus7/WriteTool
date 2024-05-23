@@ -12,5 +12,7 @@
 
 #define DATA_PATH "@DATA_PATH@"
 
+#define MAIN_GUIDE_PATH DATA_PATH "/menu.xml"
+
 
 #endif

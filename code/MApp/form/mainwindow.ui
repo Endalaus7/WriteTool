@@ -42,11 +42,11 @@
        <attribute name="title">
         <string>书籍</string>
        </attribute>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
          <widget class="QTableView" name="booksView"/>
         </item>
-        <item>
+        <item row="0" column="1">
          <layout class="QVBoxLayout" name="verticalLayout">
           <item>
            <spacer name="verticalSpacer">
@@ -62,6 +62,13 @@
            </spacer>
           </item>
           <item>
+           <widget class="QPushButton" name="btn_book_Help">
+            <property name="text">
+             <string>帮助</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QPushButton" name="btn_book_Open">
             <property name="text">
              <string>打开</string>
@@ -69,9 +76,16 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="btn_book_Help">
+           <widget class="QPushButton" name="btn_book_Create">
             <property name="text">
-             <string>帮助</string>
+             <string>创建</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_book_Input">
+            <property name="text">
+             <string>导入</string>
             </property>
            </widget>
           </item>

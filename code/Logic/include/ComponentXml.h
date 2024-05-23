@@ -1,20 +1,22 @@
 #pragma once
 
-#include "BookGuideTable.h"
+#include "BookTable.h"
 #include <map>
 
 #include "IComponent.h"
 
-//interface
+
 class ComponentXml :public IComponent
 {
 public:
-	ComponentXml(){}
-	ComponentXml(QString dataDir);//data root path
+	ComponentXml();
+	~ComponentXml();
+	//ComponentXml(QString dataDir);//data root path
 
-	virtual void Init();
+	virtual void Init()override;
 
 	bool ReadBookguide();//get the menu
+	void SetBookGuidePath(QString dir);
 	
 	bool CreatNewBook(QString name, QString bookdir);//create a empty book
 	bool Readbook(uint bookno);//get book detail message 
@@ -24,6 +26,6 @@ protected:
 	int m_minNo;
 
 	QString m_menudir;
-	std::map<uint, BookGuideTable*> m_guide;
+	std::map<uint, BookTable*> m_guide;
 
 };

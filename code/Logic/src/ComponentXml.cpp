@@ -6,17 +6,26 @@
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
 
-ComponentXml::ComponentXml(QString dataDir)
+// ComponentXml::ComponentXml(QString dataDir)
+// {
+// 	//m_menudir = QString::fromLocal8Bit(DATA_PATH) + "/menu.xml";
+// 	m_menudir = dataDir + "/menu.xml";
+// }
+
+ComponentXml::ComponentXml()
 {
-	//m_menudir = QString::fromLocal8Bit(DATA_PATH) + "/menu.xml";
-	m_menudir = dataDir + "/menu.xml";
-	
+	m_menudir = "";
 	m_minNo = 0;
+}
+
+ComponentXml::~ComponentXml()
+{
+
 }
 
 void ComponentXml::Init()
 {
-	ReadBookguide();
+	__super::Init();
 
 }
 
@@ -25,7 +34,7 @@ bool ComponentXml::ReadBookguide()
 	QFile file(m_menudir);
 	if (!file.open(QFile::ReadOnly | QFile::Text))
 	{
-		//logicLog::Instance()->showLog("Can't open menu data:" + m_menudir.toStdString());
+		logicLog::Instance()->showLog("Can't open menu data:" + m_menudir.toStdString());
 		return false;
 	}
 	m_guide.clear();//delete!!!!!!!
@@ -45,7 +54,7 @@ bool ComponentXml::ReadBookguide()
 				QString bookName = reader.attributes().value("Name").toString();
 				QString bookPath = reader.attributes().value("Path").toString();
 
-				m_guide.insert(std::pair<uint,BookGuideTable*>(bookNo, new BookGuideTable));
+				m_guide.insert(std::pair<uint,BookTable*>(bookNo, new BookTable));
 				minNo = bookNo < minNo ? bookNo : minNo;
 			}
 		}
@@ -54,33 +63,39 @@ bool ComponentXml::ReadBookguide()
 	m_minNo = (minNo == UINT_MAX) ? 0 : minNo;
 }
 
+void ComponentXml::SetBookGuidePath(QString dir)
+{
+	m_menudir = dir;
+}
+
 bool ComponentXml::CreatNewBook(QString name, QString bookPath)
 {
-// 	ReadBookguide();
-// 	BookGuideTable* book = new BookGuideTable;
-// 	book->m_dir = bookPath;
-// 	
-// 	QFile file(m_menudir);
-// 	if (!file.open(QFile::ReadOnly | QFile::Text))
-// 	{
-// 		//logicLog::Instance()->showLog("Can't open menu data:" + m_menudir.toStdString());
-// 		return false;
-// 	}
-// 	QXmlStreamWriter stream(&file);
-// 
-// 	stream.setAutoFormatting(true);
-// 	stream.writeStartDocument();
-// 	stream.writeStartElement("Books");
-// 
-// 	stream.writeAttribute("No", QString::number(m_minNo));
-// 	stream.writeAttribute("Name", name);
-// 	stream.writeTextElement("Path", bookPath);
-// 
-// 	stream.writeEndElement();
-// 	stream.writeEndDocument();
-// 
-// 	file.close();
-// 
+// 	logicLog::Instance()->showLog(name.toStdString());
+// 	logicLog::Instance()->showLog(bookPath.toStdString());
+ 	
+ 	QFile file(m_menudir);
+ 	if (!file.open(QFile::ReadWrite | QFile::Text))
+ 	{
+ 		logicLog::Instance()->showLog("Can't open menu data:" + m_menudir.toStdString());
+ 		return false;
+ 	}
+ 	QXmlStreamWriter stream(&file);
+ 
+ 	stream.setAutoFormatting(true);
+ 	stream.writeStartDocument();
+ 	stream.writeStartElement("Books");
+ 
+ 	//stream.writeAttribute("No", QString::number(m_minNo));
+ 	stream.writeAttribute("Name", name);
+ 	stream.writeTextElement("Path", bookPath);
+ 
+ 	stream.writeEndElement();
+ 	stream.writeEndDocument();
+ 
+ 	file.close();
+
+	ReadBookguide();
+ 
  	return true;
 }
 

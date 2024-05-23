@@ -2,6 +2,7 @@
 
 #include "logicLog.h"
 
+logicLog* logicLog::m_instance = nullptr;
 
 logicLog* logicLog::Instance()
 {
@@ -13,8 +14,15 @@ logicLog* logicLog::Instance()
 
 void logicLog::showLog(std::string log, ShowType type /*= Show_CMD*/)
 {
-	if (type == Show_CMD)
+	switch (type)
 	{
+	case logicLog::SHOW_CMD:
 		std::cout << log << std::endl;
+		break;
+	case logicLog::SHOW_WIDGET:
+
+		break;
+	default:
+		break;
 	}
 }

@@ -33,7 +33,7 @@ void ITable::WriteProperty(unsigned int no, const QString& propName, const QStri
 			return;
 		}
 	}
-	//logicLog::Instance()->showLog("Not Found property!"); 
+	logicLog::Instance()->showLog("Not Found property!"); 
 	return;
 }
 
