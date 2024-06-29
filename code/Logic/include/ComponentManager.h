@@ -39,11 +39,11 @@ template<typename T>
 bool ComponentManager::AddComponent()
 {
 	std::string typestring = typeid(T).name();
-	if (m_commponents.find(typestring) != m_commponents.end())//不重复
+	if (m_commponents.find(typestring) != m_commponents.end())//是否不重复
 	{
 		return false;
 	}
-	if (!std::is_base_of<IComponent, T>::value)//继承自IComponent
+	if (!std::is_base_of<IComponent, T>::value)//是否继承自IComponent
 	{
 		return false;
 	}
@@ -58,10 +58,14 @@ IComponent* ComponentManager::GetComponent()
 {
 	std::string typestring = typeid(T).name();
 	auto ret = m_commponents.find(typestring);
-	if (ret != m_commponents.end())
-		return m_commponents.at(typestring);
-	logicLog::Instance()->showLog("Can't Get Component:" + typestring);
-	return nullptr;
+	
+	if (ret == m_commponents.end())
+	{
+		bool addresult = AddComponent<T>();
+		if(!addresult)
+			return nullptr;
+	}
+	return m_commponents.at(typestring);
 }
 
 template<typename T>

@@ -37,7 +37,7 @@ bool ComponentXml::ReadBookguide()
 		logicLog::Instance()->showLog("Can't open menu data:" + m_menudir.toStdString());
 		return false;
 	}
-	m_guide.clear();//delete!!!!!!!
+	//m_guide.clear();//delete!!!!!!!
 	uint minNo = UINT_MAX;
 
 	QXmlStreamReader reader;
@@ -54,7 +54,7 @@ bool ComponentXml::ReadBookguide()
 				QString bookName = reader.attributes().value("Name").toString();
 				QString bookPath = reader.attributes().value("Path").toString();
 
-				m_guide.insert(std::pair<uint,BookTable*>(bookNo, new BookTable));
+				//m_guide.insert(std::pair<uint,BookTable*>(bookNo, new BookTable));
 				minNo = bookNo < minNo ? bookNo : minNo;
 			}
 		}

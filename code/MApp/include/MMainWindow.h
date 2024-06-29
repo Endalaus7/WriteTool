@@ -6,8 +6,6 @@
 
 #include <unordered_map>
 
-#include "ComponentManager.h"
-
 namespace Ui {
     class MainWindow;
 }
@@ -36,5 +34,4 @@ private:
     MCreateBookWindow* m_createWidget;
     MHelpBookWindow* m_helpWidget;
 
-    ComponentManager* m_componentManager;//不应该在这，后面调整
 };

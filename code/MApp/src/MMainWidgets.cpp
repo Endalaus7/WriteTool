@@ -4,14 +4,14 @@
 
 #include "../form/ui_CreateBook.h"
 #include "../form/ui_HelpBook.h"
-#include "ComponentXml.h"
+//#include "ComponentXml.h"
 
 MCreateBookWindow::MCreateBookWindow(QWidget* parent /*= nullptr*/)
 	:QWidget(parent),
 	ui(new Ui::CreateBook)
 {
 	ui->setupUi(this);
-	m_xmlcom = GetXmlComp();
+	//m_xmlcom = GET_COMPONENT(ComponentXml);
 }
 
 MCreateBookWindow::~MCreateBookWindow()
@@ -30,19 +30,11 @@ void MCreateBookWindow::on_PathSet_clicked()
 
 void MCreateBookWindow::on_create_Btn_clicked()
 {
-	if (m_xmlcom)
-	{
-		m_xmlcom->CreatNewBook(ui->lineEdit_Name->text(), ui->lineEdit_Path->text());
-	}
+	//if (m_xmlcom)
+	//{
+	//	m_xmlcom->CreatNewBook(ui->lineEdit_Name->text(), ui->lineEdit_Path->text());
+	//}
 	
-}
-
-ComponentXml* MCreateBookWindow::GetXmlComp()
-{
-	ComponentManager* pmanager = ComponentManager::GetInstance();
-	if (!pmanager)return nullptr;
-
-	return (ComponentXml*)pmanager->GetComponent<ComponentXml>();
 }
 
 MHelpBookWindow::MHelpBookWindow(QWidget* parent /*= nullptr*/)

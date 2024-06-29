@@ -1,6 +1,5 @@
 #pragma once
 
-#include "BookTable.h"
 #include <map>
 
 #include "IComponent.h"
@@ -26,6 +25,6 @@ protected:
 	int m_minNo;
 
 	QString m_menudir;
-	std::map<uint, BookTable*> m_guide;
+	//std::map<uint, BookTable*> m_guide;
 
 };

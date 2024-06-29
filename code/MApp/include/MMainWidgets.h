@@ -7,14 +7,12 @@
 #include <unordered_map>
 
 #include "MWrapper.h"
-#include "ComponentManager.h"
+//#include "ComponentManager.h"
 
 namespace Ui {
     class CreateBook;
     class HelpBook;
 }
-class ComponentXml;
-
 
 class MCreateBookWindow : public QWidget
 {
@@ -26,11 +24,12 @@ protected slots:
 	void on_PathSet_clicked();
     void on_create_Btn_clicked();
 protected:
-    ComponentXml* GetXmlComp();
+
+
 private:
     Ui::CreateBook* ui;
 
-    ComponentXml* m_xmlcom;
+    //ComponentXml* m_xmlcom;
 };
 
 class MHelpBookWindow : public QWidget

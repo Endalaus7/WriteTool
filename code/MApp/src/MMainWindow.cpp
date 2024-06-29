@@ -9,8 +9,7 @@
 
 #include "MMainWidgets.h"
 
-#include "ComponentXml.h"
-#include "config.h"
+//#include "config.h"
 
 MyWindow::MyWindow(QWidget* parent)
 	:QMainWindow(parent),
@@ -18,9 +17,7 @@ MyWindow::MyWindow(QWidget* parent)
 {
 	ui->setupUi(this);
 	InitMWindow();
-	m_componentManager = ComponentManager::GetInstance();
-	m_componentManager->AddComponent<ComponentXml>();
-	SetBookGuidePath(MAIN_GUIDE_PATH);
+	//SetBookGuidePath(MAIN_GUIDE_PATH);
 	m_createWidget = nullptr;
 };
 
@@ -40,12 +37,12 @@ void MyWindow::InitMWindow()
 
 void MyWindow::SetBookGuidePath(QString path)
 {
-	ComponentXml* xmlcomponent = (ComponentXml*)m_componentManager->GetComponent<ComponentXml>();
-	if (xmlcomponent) 
-	{
-		xmlcomponent->SetBookGuidePath(path);
-		xmlcomponent->ReadBookguide();
-	}
+// 	ComponentXml* xmlcomponent = (ComponentXml*)ComponentManager::GetInstance()->GetComponent<ComponentXml>();
+// 	if (xmlcomponent) 
+// 	{
+// 		xmlcomponent->SetBookGuidePath(path);
+// 		xmlcomponent->ReadBookguide();
+// 	}
 }
 
 void MyWindow::on_btn_book_Create_clicked()

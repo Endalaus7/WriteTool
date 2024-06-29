@@ -1,8 +1,8 @@
 #include<iostream>
-#include"MApplication.h"
+#include"MainApplication.h"
 int main(int argc, char* argv[])
 {
-    MApplication a(argc,argv);
+    MainApplication a(argc,argv);
     a.ShowWindow();
     return a.exec();
 }
